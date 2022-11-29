@@ -4,7 +4,7 @@ I have a secret for you:
 ```
 SSBsb3ZlIGNvbXB1dGVyIG5ldHdvcmtpbmchIFRoZSBtYWdpYyBpbiB0aGUgaGVhZGVyIGlzIDUyMzA1IQ==
 ```
-What is is?
+What is it?
 
 # Where else can you find the following message?
 
