@@ -24,6 +24,29 @@ Your team members, and who will be the sudoer.
 ```
 And here is a brief writeup on how to connect to your container via VScode SSH-Remote. [Remote-Writeup](https://github.com/SUSTech-CS305-Fall22/.github/blob/main/Remote_Container_HOWTO.pdf)
 
+# Dockerfile
+If you are building your own docker container, you can use the following Dockerfile to build an image that is exactly the same as the remote ones except for users:
+```
+FROM ubuntu:20.04
+
+MAINTAINER sixutan
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get update && apt-get install -y openssh-server git sudo gcc python3-matplotlib pip --fix-missing
+RUN sed -ri 's/session required pam_loginuid.so/#session required pam_loginuid.so/g' /etc/pam.d/sshd
+
+RUN useradd -m student1 -s /bin/bash
+RUN echo 'student1:network305' | chpasswd
+RUN echo 'student1  ALL=(ALL)   ALL' >> /etc/sudoers
+
+RUN mkdir /var/run/sshd
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+```
+Please search online to see how to build a Dockerfile.
+
 # Where else can you find the following message?
 
 Hi all,
